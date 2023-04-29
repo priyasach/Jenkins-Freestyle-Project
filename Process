@@ -1,0 +1,103 @@
+What is CI/CD?
+Continuous Integration and Continuous Deployment are two modern software development practices. Continuous Integration (CI) is the process of automating the build and testing of code every time a team member commits changes to version control. Continuous Deployment (CD) can be thought of as an extension of continuous integration and is the process of automatically deploying an application after CI is successful.
+
+Continuous Integration Benefits
+Fewer bugs
+
+Less context switching as developers are alerted as soon as they break the build
+
+Testing costs are reduced
+
+Your QA team spends less time testing
+
+Continuous Deployment Benefits
+Releases are less risky
+
+Easy release
+
+Customers see a continuous stream of improvements
+
+Expedite development as there’s no need to pause development for releases
+
+What is Node
+Node is an environment that allows you to create a pipeline.
+
+Creating a Node App
+Before we write any CI/CD pipeline we need an application to test and deploy. We are going to build a simple node.js application that responds with Node.js app ToDo list.
+
+Task-01
+Create a new Jenkins freestyle project for your app.
+
+Log in to Jenkins and navigate to the main dashboard.
+
+Click on the "New Item" button to create a new project.
+
+
+
+Select "Freestyle project" and give the project a name.
+
+Click on the "OK" button to create the project.
+
+
+
+In the project configuration page, you can specify the details of the project, such as the source code management system, build triggers, and build actions. In GitHub project write your GitHub project repository URL.
+
+
+
+In the "Source Code Management" section, you can specify the repository location, such as Git and Select the branch name "main"
+
+
+
+In Build Steps, we add build steps to run the docker build command to create an image for the container. Then add a second step as the docker run command to run the container from the image created in the previous step.
+
+
+
+Click on the "Save" button to save the project configuration.
+
+Build the project: You can manually build the project by clicking on the "Build Now" link on the project's main page. This will start the build process and execute the steps specified in the project configuration.
+
+
+
+After a build is completed, you can view the console output by clicking on the "Console Output" link on the build page. This will show the output of the commands that were executed during the build
+
+
+
+You can see the image and the container is created. also project from GitHub deploy to the ubuntu EC2 instance at location /var/lib/jenkins/workspace/Jenkins-project-name.
+
+
+
+Our application is also running as seen below.
+
+
+Task-02
+Create a Jenkins project to run the "docker-compose up -d" command to start the multiple containers defined in the compose file
+
+Set up a cleanup step in the Jenkins project to run the "docker-compose down" command to stop and remove the containers defined in the compose file.
+
+1)In continuing to the first task, we create docker-compose.yml the file inside our project.
+
+
+
+2. In the Build step section, add build steps like this. Here docker-compose down is taken first to remove and stop the containers defined in the compose file then afterward, we use the docker-compose up -d command.
+
+
+
+3. Save the configurations and build the project.
+
+4)After a build is completed, you can view the console output.
+
+
+
+
+
+5)You can see the container is created.
+
+
+
+Now you can try accessing the application on the browser.
+
+
+
+Thank You for reading💚, I hope you find this article helpful.
+
+Happy Learning!!
